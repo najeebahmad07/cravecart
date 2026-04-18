@@ -352,3 +352,523 @@ XAMPP is a cross-platform package containing Apache, MySQL, and PHP. Follow thes
 1. **Download XAMPP**
    ```bash
    wget https://www.apachefriends.org/xampp-files/8.2.0/xampp-linux-x64-8.2.0-installer.tar.gz
+
+
+
+    Extract XAMPP
+
+    Bash
+
+    sudo tar xvfz xampp-linux-x64-8.2.0-installer.tar.gz -C /opt
+
+    Start XAMPP
+
+    Bash
+
+    sudo /opt/lampp/manager-linux &
+
+Step 2: Start XAMPP Services
+
+After installing XAMPP, you need to start the services:
+
+    Open XAMPP Control Panel
+        Windows: Click Start → XAMPP Control Panel
+        Mac: Open Applications/XAMPP/manager-osx
+        Linux: Already running from command
+
+    Start Apache Web Server
+        Find "Apache" in the control panel
+        Click the "Start" button next to it
+        Wait 2-3 seconds
+        Status should change to GREEN with "Running"
+
+    Start MySQL Database Server
+        Find "MySQL" in the control panel
+        Click the "Start" button next to it
+        Status should change to GREEN with "Running"
+
+    Verify Installation
+        Open your web browser
+        Go to http://localhost/
+        You should see the XAMPP Dashboard
+        Click on "phpMyAdmin" to verify MySQL is working
+        You should see the database management interface
+
+Step 3: Prepare Project Folder
+Option A: Clone from GitHub (Recommended)
+
+If you have Git installed:
+
+    Open Command Prompt / Terminal
+        Windows: Press Win+R, type cmd, press Enter
+        Mac: Command + Space, type terminal
+        Linux: Open terminal application
+
+    Navigate to htdocs Folder
+
+    Bash
+
+    # Windows
+    cd C:\xampp\htdocs
+
+    # Mac
+    cd /Applications/XAMPP/xamppfiles/htdocs
+
+    # Linux
+    cd /opt/lampp/htdocs
+
+    Clone CraveCart Repository
+
+    Bash
+
+    git clone https://github.com/najeebahmad07/cravecart.git
+    cd cravecart
+
+Option B: Manual Download
+
+If you don't have Git:
+
+    Download ZIP File
+        Visit: https://github.com/najeebahmad07/cravecart
+        Click green "Code" button
+        Select "Download ZIP"
+        The file cravecart-main.zip will download
+
+    Extract ZIP File
+        Right-click the ZIP file
+        Windows: Select "Extract All"
+        Mac: Double-click to auto-extract
+        Linux: Use unzip cravecart-main.zip
+
+    Move to htdocs
+        Cut/copy the extracted folder
+        Navigate to your htdocs folder:
+            Windows: C:\xampp\htdocs\
+            Mac: /Applications/XAMPP/xamppfiles/htdocs/
+            Linux: /opt/lampp/htdocs/
+        Paste the folder there
+        Rename folder to cravecart (if needed)
+
+Step 4: Create Upload Directories
+
+Image uploads need special folders with write permissions:
+Windows
+
+    Navigate to Project Folder
+        Open File Explorer
+        Go to C:\xampp\htdocs\cravecart\
+
+    Create Folders
+        Right-click empty space
+        Select "New" → "Folder"
+        Create folder named: uploads
+        Inside uploads, create:
+            restaurants folder
+            menu folder
+
+    Set Permissions
+        Right-click uploads folder
+        Select "Properties"
+        Go to "Security" tab
+        Click "Edit"
+        Select your user
+        Check "Full Control"
+        Click "Apply" → "OK"
+
+Mac/Linux
+
+Bash
+
+# Navigate to project
+cd /path/to/cravecart
+
+# Create folders
+mkdir -p uploads/restaurants
+mkdir -p uploads/menu
+
+# Set permissions (allow write)
+chmod -R 777 uploads
+
+Step 5: Verify Project Structure
+
+Your project folder should look exactly like this:
+
+text
+
+cravecart/
+├── config/
+│   ├── database.php           ✅ Database configuration
+│   └── config.php             ✅ Site configuration
+├── includes/
+│   ├── header.php             ✅ HTML header
+│   ├── navbar.php             ✅ Navigation bar
+│   └── footer.php             ✅ Footer section
+├── pages/
+│   ├── home.php               ✅ Home page
+│   ├── login.php              ✅ Login page
+│   ├── register.php           ✅ Registration page
+│   ├── restaurant.php         ✅ Restaurant menu
+│   ├── cart.php               ✅ Shopping cart
+│   ├── checkout.php           ✅ Checkout
+│   ├── order-success.php      ✅ Order confirmation
+│   └── dashboard.php          ✅ User dashboard
+├── admin/
+│   ├── index.php              ✅ Admin login
+│   ├── dashboard.php          ✅ Admin dashboard
+│   ├── restaurants.php        ✅ Manage restaurants
+│   ├── menu-items.php         ✅ Manage menu
+│   ├── orders.php             ✅ Manage orders
+│   ├── users.php              ✅ View users
+│   └── includes/
+│       ├── header.php
+│       ├── sidebar.php
+│       └── footer.php
+├── assets/
+│   ├── css/
+│   │   ├── style.css          ✅ Main stylesheet
+│   │   └── admin.css          ✅ Admin styles
+│   └── js/
+│       ├── main.js            ✅ Frontend JS
+│       └── admin.js           ✅ Admin JS
+├── auth/
+│   ├── login-process.php      ✅ Login handler
+│   ├── register-process.php   ✅ Registration handler
+│   └── logout.php             ✅ Logout handler
+├── ajax/
+│   ├── add-to-cart.php        ✅ Add to cart
+│   ├── update-cart.php        ✅ Update cart
+│   ├── remove-from-cart.php   ✅ Remove from cart
+│   ├── place-order.php        ✅ Place order
+│   └── get-order-details.php  ✅ Get order info
+├── uploads/                   ✅ Image uploads
+│   ├── restaurants/           ✅ Restaurant images
+│   └── menu/                  ✅ Menu item images
+├── index.php                  ✅ Router entry point
+├── .htaccess                  ✅ Clean URL rules
+├── database.sql               ✅ Database dump
+└── README.md                  ✅ Documentation
+
+If any folder is missing, create it manually.
+🗄️ Database Setup
+Step 1: Access phpMyAdmin
+
+    Open phpMyAdmin
+        Open your browser
+        Go to: http://localhost/phpmyadmin/
+
+    Login
+        Username: root (default)
+        Password: (leave empty - default)
+        Click "Go"
+
+You should see the phpMyAdmin interface with database list on left.
+Step 2: Create New Database
+
+    Click "New" Button
+        On the left sidebar, click the "+ New" option
+        OR at the top, click "Databases" tab
+
+    Enter Database Name
+        Database name field: cravecart
+        Collation dropdown: Select utf8mb4_unicode_ci
+        This is important for international character support
+
+    Create Database
+        Click "Create" button
+        Wait 2-3 seconds
+        You should see "Database cravecart created successfully"
+
+Step 3: Import SQL Data
+
+    Select the Database
+        In the left sidebar, click on cravecart database
+        The database is now selected (highlighted)
+
+    Go to Import Tab
+        At the top menu, click "Import" tab
+
+    Choose SQL File
+        Find "File to import" section
+        Click "Choose File" button
+        Navigate to your project folder
+        Select database.sql file
+        Click "Open"
+
+    Run Import
+        Scroll down slightly
+        Click the "Import" button (blue button)
+        Wait 5-10 seconds for import to complete
+        You should see message: "Import has been successfully finished"
+
+Step 4: Verify Database Tables
+
+After import, verify all tables were created:
+
+    Check Tables
+        In left sidebar, click on cravecart database
+        Expand the database to see tables
+        You should see these 6 tables:
+            ✅ users
+            ✅ admin
+            ✅ restaurants
+            ✅ menu_items
+            ✅ orders
+            ✅ order_items
+
+    View Sample Data
+        Click on "users" table
+        You should see 10 sample users
+        Click on "restaurants" table
+        You should see 5 sample restaurants
+        All data is ready to use!
+
+Step 5: Verify Database Connection
+
+    Check config/database.php
+    Open the file and verify:
+
+    PHP
+
+    private $host = "localhost";
+    private $username = "root";
+    private $password = "";           // Empty (default XAMPP)
+    private $database = "cravecart";  // Matches what we created
+
+    Test Connection
+        Go to http://localhost/cravecart/
+        If you see the home page (not errors), database is connected ✅
+
+⚙️ Configuration
+Step 1: Update Site URL (if needed)
+
+File: config/config.php
+
+If you installed CraveCart in a different location, update this:
+
+PHP
+
+define('SITE_URL', 'http://localhost/cravecart');
+
+Examples for different setups:
+
+PHP
+
+// If installed as root
+define('SITE_URL', 'http://localhost');
+
+// If installed in subfolder
+define('SITE_URL', 'http://localhost/food-delivery');
+
+// For production
+define('SITE_URL', 'https://yourdomain.com');
+
+Step 2: Verify File Permissions
+
+Ensure upload folders are writable:
+Windows
+
+    Right-click uploads folder
+    Properties → Security → Edit
+    Select user → Check "Full Control"
+    Apply → OK
+
+Mac/Linux
+
+Bash
+
+chmod -R 755 uploads/
+chmod -R 755 uploads/restaurants/
+chmod -R 755 uploads/menu/
+
+Step 3: Enable Apache Modules
+
+For clean URLs to work, Apache module mod_rewrite must be enabled:
+Windows (XAMPP)
+
+    Open XAMPP Control Panel
+    Click "Config" button next to Apache
+    Select "Apache (httpd.conf)"
+    Search for: LoadModule rewrite_module modules/mod_rewrite.so
+    If it has # at the start, remove it:
+
+    text
+
+    #LoadModule rewrite_module modules/mod_rewrite.so    ❌ WRONG
+    LoadModule rewrite_module modules/mod_rewrite.so     ✅ CORRECT
+
+    Save the file
+    Restart Apache
+
+Mac/Linux
+
+Bash
+
+sudo a2enmod rewrite
+sudo service apache2 restart
+
+Step 4: Verify .htaccess
+
+Check that .htaccess file exists in project root and contains:
+
+apache
+
+RewriteEngine On
+RewriteBase /cravecart/
+
+RewriteCond %{REQUEST_URI} ^/cravecart/
+RewriteRule ^admin/(.*)$ admin/$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+RewriteRule ^(.+)$ index.php?page=$1 [QSA,L]
+
+This enables URLs like:
+
+    ✅ http://localhost/cravecart/home (not /pages/home.php)
+    ✅ http://localhost/cravecart/cart
+    ✅ http://localhost/cravecart/admin/dashboard
+
+🚀 Running the Application
+Step 1: Ensure Services Are Running
+
+    Check XAMPP Control Panel
+        Apache: Should be GREEN "Running"
+        MySQL: Should be GREEN "Running"
+
+    If not running:
+        Click "Start" button next to Apache
+        Click "Start" button next to MySQL
+        Wait 3-5 seconds
+
+Step 2: Access the Application
+
+Open your web browser and go to:
+
+text
+
+http://localhost/cravecart/
+
+You should see the beautiful CraveCart Home Page with:
+
+    ✅ Sticky navbar with logo
+    ✅ Hero section with image slider
+    ✅ Featured restaurants with ratings
+    ✅ About section
+    ✅ Testimonials carousel
+    ✅ FAQ accordion
+    ✅ Call-to-action section
+    ✅ Professional footer
+
+Step 3: Quick Navigation
+Page	URL
+Home Page	http://localhost/cravecart/
+User Login	http://localhost/cravecart/login
+User Register	http://localhost/cravecart/register
+Shopping Cart	http://localhost/cravecart/cart
+Checkout	http://localhost/cravecart/checkout
+User Dashboard	http://localhost/cravecart/dashboard
+Admin Login	http://localhost/cravecart/admin
+Admin Dashboard	http://localhost/cravecart/admin/dashboard
+phpMyAdmin	http://localhost/phpmyadmin/
+Step 4: Test the Application
+
+For Users:
+
+    Go to home page
+    See 5 restaurants
+    Click "View Full Menu"
+    Browse menu items
+    Try adding items to cart (if not logged in, you'll need to login)
+
+For Admin:
+
+    Go to http://localhost/cravecart/admin
+    Login with admin credentials (see below)
+    Access all admin modules
+
+🔐 Login Credentials
+👤 User Test Accounts
+
+All sample users have password: password
+Email	Password	Name
+neha@example.com	password	Neha Qazmi
+ayaan@example.com	password	Ayaan Khan
+sana@example.com	password	Sana Khan
+shama@example.com	password	Shama Parveen
+zaid@example.com	password	Zaid Ali
+sameer@example.com	password	Sameer Hussain
+faizan@example.com	password	Faizan Ahmed
+imran@example.com	password	Imran Malik
+ayesha@example.com	password	Ayesha Ali
+fatima@example.com	password	Fatima Noor
+
+How to Login:
+
+    Go to http://localhost/cravecart/login
+    Enter any user email
+    Enter password: password
+    Click "Login"
+    You'll be logged in and can start ordering!
+
+🔑 Admin Account
+Email	Password	Role
+admin@cravecart.com	password	Administrator
+
+How to Login as Admin:
+
+    Go to http://localhost/cravecart/admin
+    Enter email: admin@cravecart.com
+    Enter password: password
+    Click "Login"
+    Access admin panel with all features!
+
+🆕 Create New User Account
+
+You can also create a new account:
+
+    Go to http://localhost/cravecart/register
+    Fill in the form:
+        Full Name
+        Email (unique)
+        Phone: +92-300-XXXXXXX
+        Address
+        Password (min 6 characters)
+        Confirm Password
+    Click "Create Account"
+    You'll be auto-logged in
+    Start ordering!
+
+✅ Testing Guide
+TEST 1: User Registration & Login
+Register New Account
+
+text
+
+Steps:
+1. Go to /register
+2. Fill form with:
+   - Name: Your Name
+   - Email: yourname@example.com
+   - Phone: +92-300-1234567
+   - Address: Your Complete Address
+   - Password: MyPassword123
+   - Confirm: MyPassword123
+3. Click "Create Account"
+
+Expected Results:
+✅ Account created
+✅ Auto-logged in
+✅ Redirected to dashboard
+✅ User name shown in navbar
+
+Login with Existing Account
+
+text
+
+Steps:
+1. Go to /login
+2. Enter email: neha@example.com
+
+
