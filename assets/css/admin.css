@@ -1,0 +1,238 @@
+/* ========================================
+   CraveCart Admin Panel CSS
+======================================== */
+
+:root {
+    --primary-color: #3858e9;
+    --primary-dark: #2642c7;
+    --sidebar-width: 260px;
+    --sidebar-bg: #1a1d2e;
+    --topbar-height: 70px;
+}
+
+body {
+    background: #f8f9fa;
+}
+
+/* ========================================
+   SIDEBAR
+======================================== */
+.admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--sidebar-bg);
+    color: white;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.admin-sidebar .brand {
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-sidebar .brand h4 {
+    margin: 0;
+    font-weight: 700;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 1rem 0;
+    margin: 0;
+}
+
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.sidebar-menu li a:hover,
+.sidebar-menu li a.active {
+    background: rgba(56, 88, 233, 0.2);
+    color: white;
+    border-left: 4px solid var(--primary-color);
+}
+
+.sidebar-menu li a i {
+    width: 24px;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+/* ========================================
+   MAIN CONTENT
+======================================== */
+.admin-main {
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+}
+
+.admin-topbar {
+    background: white;
+    height: var(--topbar-height);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.admin-content {
+    padding: 2rem;
+}
+
+/* ========================================
+   STATS CARDS
+======================================== */
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card .icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.stat-card.primary .icon {
+    background: rgba(56, 88, 233, 0.1);
+    color: var(--primary-color);
+}
+
+.stat-card.success .icon {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.stat-card.warning .icon {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.stat-card.danger .icon {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.stat-card h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+    color: #6c757d;
+    margin: 0;
+}
+
+/* ========================================
+   TABLES
+======================================== */
+.table-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+}
+
+.table {
+    margin: 0;
+}
+
+.table thead th {
+    border-top: none;
+    border-bottom: 2px solid #e9ecef;
+    font-weight: 600;
+    color: #495057;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    padding: 1rem;
+}
+
+.table tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+/* ========================================
+   BADGES
+======================================== */
+.badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* ========================================
+   BUTTONS
+======================================== */
+.btn-action {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   FORMS
+======================================== */
+.form-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 992px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .admin-main {
+        margin-left: 0;
+    }
+}
