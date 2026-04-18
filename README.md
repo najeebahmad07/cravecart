@@ -353,3 +353,17 @@ XAMPP is a cross-platform package containing Apache, MySQL, and PHP. Follow thes
    ```bash
    wget https://www.apachefriends.org/xampp-files/8.2.0/xampp-linux-x64-8.2.0-installer.tar.gz
 
+ Admin Account
+Email	Password	Role
+admin@cravecart.com	password	Administrator
+
+How to Login as Admin:
+
+    Go to http://localhost/cravecart/admin
+    Enter email: admin@cravecart.com
+    Enter password: password
+    Click "Login"
+    Access admin panel with all features!
+
+
+
