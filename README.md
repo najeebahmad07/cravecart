@@ -351,4 +351,4 @@ XAMPP is a cross-platform package containing Apache, MySQL, and PHP. Follow thes
 
 1. **Download XAMPP**
    ```bash
-   wget
+   wget https://www.apachefriends.org/xampp-files/8.2.0/xampp-linux-x64-8.2.0-installer.tar.gz
